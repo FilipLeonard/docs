@@ -622,7 +622,7 @@ CREATE TABLE "Post" (
 );
 ```
 
-Since there's no `UNIQUE` constraint on the `author` column (foreign key), you can create multiple `Post` records that point to the same `User` record therefore creating a one-to-many relationship between the two tables.
+Since there's no `UNIQUE` constraint on the `authorId` column (foreign key), you can create multiple `Post` records that point to the same `User` record therefore creating a one-to-many relationship between the two tables.
 
 You can also define this relation using [multi-field IDs](../../../reference/api-reference/prisma-schema-reference#id-1):
 
@@ -858,12 +858,12 @@ When using Prisma Migrate, you can configure the name of the relation table that
 ```prisma
 model Post {
   id         Int         @id @default(autoincrement())
-  categories Category[]  @relation("MyRelationTable")
+  categories Category[]  @relation("_MyRelationTable")
 }
 
 model Category {
   id    Int     @id @default(autoincrement())
-  posts Post[]  @relation("MyRelationTable")
+  posts Post[]  @relation("_MyRelationTable")
 }
 ```
 
